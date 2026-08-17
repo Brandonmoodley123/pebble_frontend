@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+:root {
+  --color-bg: #f7f7f8;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f3f3f5;
+  --color-surface-elevated: #fbfbfc;
+  --color-border: #e5e5e8;
+  --color-border-strong: #d4d4d9;
+  --color-text: #0d0d10;
+  --color-text-muted: #55555f;
+  --color-text-faint: #8b8b95;
+  --color-accent: #0d0d10;
+  --color-accent-hover: #26262b;
+  --color-accent-contrast: #ffffff;
+  --color-ring: #0d0d10;
+  --shadow-color: 220 20% 10%;
+}
+
+.dark {
+  --color-bg: #0a0a0c;
+  --color-surface: #141417;
+  --color-surface-hover: #1c1c20;
+  --color-surface-elevated: #1a1a1e;
+  --color-border: #26262b;
+  --color-border-strong: #35353c;
+  --color-text: #f7f7f8;
+  --color-text-muted: #a6a6b0;
+  --color-text-faint: #6f6f79;
+  --color-accent: #f7f7f8;
+  --color-accent-hover: #d9d9df;
+  --color-accent-contrast: #0a0a0c;
+  --color-ring: #f7f7f8;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-surface-hover: var(--color-surface-hover);
+  --color-surface-elevated: var(--color-surface-elevated);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-faint: var(--color-text-faint);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-contrast: var(--color-accent-contrast);
+  --color-ring: var(--color-ring);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-bg text-text antialiased;
+  transition: background-color 0.15s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+/* Scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-strong) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-strong);
+  border-radius: 999px;
+  border: 2px solid var(--color-bg);
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes row-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-backdrop-in {
+  animation: backdrop-in 0.15s ease-out;
+}
+
+.animate-modal-in {
+  animation: modal-in 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-row-in {
+  animation: row-in 0.2s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.15s ease-out both;
+}
+
+.animate-drawer-in {
+  animation: drawer-in 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
